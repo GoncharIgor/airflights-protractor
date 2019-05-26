@@ -1,4 +1,5 @@
 const AllureReporter = require('jasmine-allure-reporter');
+const HtmlScreenshotReporter = require('protractor-jasmine2-screenshot-reporter');
 const jar = require('selenium-server-standalone-jar');
 const log4js = require('log4js');
 const path = require('path');
@@ -6,7 +7,7 @@ const SpecReporter = require('jasmine-spec-reporter').SpecReporter;
 import {browser} from 'protractor';
 
 const allureResultsPath = path.join('./target/allure-xml-report');
-const downloadPath = path.join(__dirname, '/downloads', '/' + Date.now());
+const exportedFilesPath = path.join(__dirname, '../../exportedFiles');
 const log4jsConfig = require('./log4js');
 
 export const computersBaseConfig = {
@@ -20,7 +21,7 @@ export const computersBaseConfig = {
   specs: ['../tests/*.js'],
   suites: {},
   params: {
-    downloadPath,
+    exportedFilesPath,
     baseUrl: 'https://www.tajawal.com/en',
     proxy: 'http://10.105.0.40:8080'
   },
@@ -71,6 +72,12 @@ function onPrepare() {
 
   jasmine.getEnv().addReporter(new AllureReporter({
     resultsDir: allureResultsPath
+  }));
+
+  jasmine.getEnv().addReporter(new HtmlScreenshotReporter({
+    dest: 'target/screenshots',
+    filename: 'my-report.html',
+    captureOnlyFailedSpecs: false
   }));
 
   // efg custom reporter

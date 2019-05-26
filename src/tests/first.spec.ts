@@ -6,7 +6,6 @@ import {browser} from "protractor";
 describe('INDEX page', () => {
   const indexPage = new IndexPage();
   const searchResultPage = new SearchResultPage();
-  // const flight: Flight =
   const data: Flight = Object.assign(require('../test.data/kyiv-barcelona.flight.json'));
 
   beforeEach(async () => {
