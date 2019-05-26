@@ -1,0 +1,58 @@
+{
+  "name": "tajawal-protractor",
+  "version": "1.0.0",
+  "description": "Demostration project using Protractor with TypeScript",
+  "main": "index.js",
+  "devDependencies": {
+    "@types/jasmine": "^3.3.12",
+    "@types/jasminewd2": "^2.0.6",
+    "@types/lodash": "4.14.129",
+    "@types/node": "^12.0.2",
+    "allure-commandline": "2.9.0",
+    "copyfiles": "2.0.0",
+    "del": "4.1.1",
+    "jasmine-allure-reporter": "1.0.2",
+    "jasmine-spec-reporter": "4.2.1",
+    "log4js": "4.2.0",
+    "log4js-protractor-appender": "1.1.2",
+    "moment": "2.24.0",
+    "pre-commit": "^1.2.2",
+    "protractor": "5.4.2",
+    "protractor-element-extend": "2.1.0",
+    "protractor-flake": "4.0.0",
+    "protractor-helpers": "1.1.527",
+    "q": "1.5.1",
+    "request": "2.88.0",
+    "request-promise": "4.2.4",
+    "selenium-server-standalone-jar": "3.141.5",
+    "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5",
+    "typescript-eslint-parser": "^22.0.0"
+  },
+  "engines": {
+    "node": "^8",
+    "npm": "^5"
+  },
+  "scripts": {
+    "allure-generate-report": "node ./node_modules/allure-commandline/bin/allure generate ./target/allure-xml-report -o ./target/allure-html-report",
+    "build": "tsc",
+    "clean": "rimraf target/",
+    "clean-build": "npm run clean && npm run build && npm run copy-jsons",
+    "copy-jsons": "copyfiles -u 1 **/src/**/*.json target/",
+    "test": "npm run clean-build && node src/config/flake.ts target/config/chrome.conf.js",
+    "wd-status": "node node_modules/protractor/bin/webdriver-manager status",
+    "wd-update-chrome": "node node_modules/protractor/bin/webdriver-manager update --versions.chrome=2.44 --gecko false",
+    "wd-update-firefox": "node node_modules/protractor/bin/webdriver-manager update --version.gecko='v0.19.1'",
+    "wd-update-ie": "node node_modules/protractor/bin/webdriver-manager update --ie --gecko false"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GoncharIgor/TypescriptProtractor.git"
+  },
+  "author": "",
+  "license": "ISC"
+}

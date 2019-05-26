@@ -1,0 +1,8 @@
+{
+  "origin": "Kyiv",
+  "destination": "BCN",
+  "fromDate": "May 28 2019",
+  "toDate": "Jun 05 2019",
+  "cabinType": "economy",
+  "passengersAmount": 2
+}

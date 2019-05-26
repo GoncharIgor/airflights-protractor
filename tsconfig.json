@@ -1,0 +1,25 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "./target",
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "target": "es2017",
+    "typeRoots": [
+      "node_modules/@types",
+      "src/custom_typings"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ]
+  }
+}
