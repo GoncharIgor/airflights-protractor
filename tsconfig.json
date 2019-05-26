@@ -9,7 +9,7 @@
     "experimentalDecorators": true,
     "module": "commonjs",
     "moduleResolution": "node",
-    "outDir": "./target",
+    "outDir": "./target/src",
     "resolveJsonModule": true,
     "sourceMap": true,
     "target": "es2017",

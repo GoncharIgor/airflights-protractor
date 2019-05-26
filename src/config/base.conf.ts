@@ -6,7 +6,7 @@ const SpecReporter = require('jasmine-spec-reporter').SpecReporter;
 import {browser} from 'protractor';
 
 const allureResultsPath = path.join('./target/allure-xml-report');
-const downloadPath = path.join(__dirname, '\\downloads', '\\' + Date.now());
+const downloadPath = path.join(__dirname, '/downloads', '/' + Date.now());
 const log4jsConfig = require('./log4js');
 
 export const computersBaseConfig = {
@@ -21,7 +21,6 @@ export const computersBaseConfig = {
   suites: {},
   params: {
     downloadPath,
-    remote: false,
     baseUrl: 'https://www.tajawal.com/en',
     proxy: 'http://10.105.0.40:8080'
   },

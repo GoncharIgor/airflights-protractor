@@ -37,11 +37,11 @@
     "build": "tsc",
     "clean": "rimraf target/",
     "clean-build": "npm run clean && npm run build && npm run copy-jsons",
-    "copy-jsons": "copyfiles -u 1 **/src/**/*.json target/",
-    "test": "npm run clean-build && node src/config/flake.ts target/config/chrome.conf.js",
+    "copy-jsons": "copyfiles -u 1 **/src/**/*.json target/src",
+    "test": "npm run clean-build && node src/config/flake.ts target/src/config/chrome.conf.js",
     "wd-status": "node node_modules/protractor/bin/webdriver-manager status",
     "wd-update-chrome": "node node_modules/protractor/bin/webdriver-manager update --versions.chrome=2.44 --gecko false",
-    "wd-update-firefox": "node node_modules/protractor/bin/webdriver-manager update --version.gecko='v0.19.1'",
+    "wd-update-firefox": "node node_modules/protractor/bin/webdriver-manager update --versions.gecko=v0.24.0",
     "wd-update-ie": "node node_modules/protractor/bin/webdriver-manager update --ie --gecko false"
   },
   "pre-commit": [

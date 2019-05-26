@@ -17,6 +17,6 @@ export const config = _.merge(computersBaseConfig, {
     }
   },
   localSeleniumStandaloneOpts: {
-    jvmArgs: ['-Dwebdriver.gecko.driver=node_modules/protractor/node_modules/webdriver-manager/selenium/geckodriver-v0.20.0.exe']
+    jvmArgs: ['-Dwebdriver.gecko.driver=node_modules/protractor/node_modules/webdriver-manager/selenium/geckodriver-v0.24.0']
   }
 });

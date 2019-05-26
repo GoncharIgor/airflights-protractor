@@ -16,6 +16,6 @@ export const config = _.merge(computersBaseConfig, {
       }
     }
   },
-  chromeDriver: ('../../node_modules/protractor/node_modules/webdriver-manager/selenium/chromedriver_2.44'
+  chromeDriver: ('../../../node_modules/protractor/node_modules/webdriver-manager/selenium/chromedriver_2.44'
     + (process.platform.indexOf('win') === 0 ? '.exe' : ''))
 });
