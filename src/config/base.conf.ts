@@ -13,10 +13,11 @@ const log4jsConfig = require('./log4js');
 export const computersBaseConfig = {
   framework: 'jasmine2',
   seleniumServerJar: jar.path,
+  SELENIUM_PROMISE_MANAGER: false,
   // seleniumAddress: 'http://localhost:4444/wd/hub/',
-  allScriptsTimeout: 20000,
+  allScriptsTimeout: 30000,
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 20000
+    defaultTimeoutInterval: 30000
   },
   specs: ['../tests/*.js'],
   suites: {},

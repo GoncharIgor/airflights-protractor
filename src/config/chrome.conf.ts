@@ -6,7 +6,13 @@ export const config = _.merge(computersBaseConfig, {
   capabilities: {
     browserName: 'chrome',
     chromeOptions: {
-      args: ['--no-sandbox', '--test-type=browser', 'disable-extensions', '--disable-infobars'],
+      args: [
+        '--no-sandbox',
+        '--test-type=browser',
+        'disable-extensions',
+        '--disable-infobars',
+        "--disable-browser-side-navigation"
+      ],
       prefs: {
         'plugins.always_open_pdf_externally': true,
         'download': {
