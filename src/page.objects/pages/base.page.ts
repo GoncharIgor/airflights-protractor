@@ -3,16 +3,11 @@ import {$, browser, protractor} from 'protractor';
 const EC = protractor.ExpectedConditions;
 
 export abstract class BasePage {
-  protected pageTitle: string;
 
   public async openPage(path?: string | undefined): Promise<void> {
     await browser.get(path ? browser.params.baseUrl + path : browser.params.baseUrl);
   }
 
-  /**
-   * get page title
-   * @return {string} text
-   */
   public async getPageTitle(): Promise<string> {
     return await browser.getTitle();
   }
@@ -30,7 +25,7 @@ export abstract class BasePage {
     }
   }
 
-  public async waitUntilElementIsClickable(elem) {
+  public async waitUntilElementIsClickable(elem): Promise<void> {
     try {
       return await browser.wait(EC.elementToBeClickable(elem), 5000);
     } catch (e) {

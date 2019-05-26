@@ -1,24 +1,30 @@
 import {$, $$, browser, by, ElementArrayFinder, ElementFinder} from "protractor";
 
 const dateMMFormat = 'MMM DD YYYY';
-const formattedDateRegEx = /^(\D{3})\/(\d{1,2})\/(\d{4})$/;
 
 export class CalendarElement {
-  private  calendarField: ElementFinder;
-  private  currentMonth: ElementFinder;
-  private  nextMonth: ElementFinder;
-  private  activeDates: ElementArrayFinder;
-  private activeDatesSelector = '.DayPicker-Month div[aria-disabled=false]';
+  private readonly monthWrapperSelector = '.DayPicker-Month';
+  private readonly monthDropdownSelector = '.DayPicker-Caption > div > div';
+  private readonly activeDatesSelector = '.DayPicker-Month div[aria-disabled=false]';
+
+  private activeDates: ElementArrayFinder;
+  private currentMonth: ElementFinder;
+  private currentMonthDropdown: ElementFinder;
+  private currentYearDropdown: ElementFinder;
+  private nextMonth: ElementFinder;
+  private rootElement: ElementFinder;
 
   constructor(rootElement = $('.DayPicker-wrapper')) {
-    this.calendarField = rootElement;
-    this.currentMonth = $$('.DayPicker-Month').get(0);
-    this.nextMonth = $$('.DayPicker-Month').get(1);
-    this.activeDates = $$(this.activeDatesSelector)
+    this.rootElement = rootElement;
+    this.activeDates = rootElement.$$(this.activeDatesSelector);
+    this.currentMonth = rootElement.$$(this.monthWrapperSelector).get(0);
+    this.nextMonth = rootElement.$$(this.monthWrapperSelector).get(1);
+    this.currentMonthDropdown = this.currentMonth.$$(this.monthDropdownSelector).get(0);
+    this.currentYearDropdown = this.currentMonth.$$(this.monthDropdownSelector).get(1);
   }
 
-  async selectDate(activeDate) {
-    const day = $$(`${this.activeDatesSelector}[aria-label$="${activeDate}"]`).get(0);
+  async selectDate(date): Promise<void> {
+    const day = this.rootElement.$$(`${this.activeDatesSelector}[aria-label$="${date}"]`).get(0);
     await day.click();
   }
 }

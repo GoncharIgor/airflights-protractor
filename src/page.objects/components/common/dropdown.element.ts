@@ -10,21 +10,21 @@ export class DropDown extends BaseFragment {
     this.openStateLocator = `.dropdown.open ${this.optionElement}`;
   }
 
-  async selectOption(optionName) {
+  async selectOption(optionName): Promise<void> {
     const optionLocator = await element(by.cssContainingText(this.openStateLocator, optionName));
     await optionLocator.click();
   }
 
-  async selectOptionByIndex(index) {
+  async selectOptionByIndex(index): Promise<void> {
     const optionLocator = $$(this.openStateLocator).get(index);
     await optionLocator.click();
   }
 
-  async getText() {
+  async getText(): Promise<string> {
     return await this.dropdown.getText();
   }
 
-  async isAvailableOption(optionName) {
+  async isAvailableOption(optionName): Promise<boolean> {
     const optionLocator = element(by.cssContainingText(this.openStateLocator, optionName));
     return await optionLocator.isPresent();
   }

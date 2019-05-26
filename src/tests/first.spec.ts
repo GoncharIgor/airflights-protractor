@@ -15,7 +15,7 @@ describe('INDEX page', () => {
   });
 
   it('should have the right title', async () => {
-    await indexPage.searchForm.fillSearchForm(data);
+    await indexPage.searchFlight(data);
     await searchResultPage.waitForResultsToLoad();
   });
 

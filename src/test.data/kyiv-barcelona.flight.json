@@ -5,7 +5,7 @@
   "toDate": "Jun 05 2019",
   "cabinType": "economy",
   "passengers": {
-    "category": "adult",
+    "category": "Adults",
     "amount": 2
   }
 }

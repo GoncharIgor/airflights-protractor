@@ -1,79 +1,77 @@
-import {$, by, ElementFinder, protractor} from 'protractor';
-import {Flight} from "../../../interfaces/flight";
+import {$, ElementFinder, protractor} from 'protractor';
 import {CalendarElement} from "../common/calendar.element";
+import {Flight} from "../../../interfaces/flight";
 import {PassengersAmountForm} from "./passengers.amount.form";
 
 export class FlightsSearchForm {
-  private originInputField: ElementFinder;
-  private destinationInputField: ElementFinder;
-  private fromCalendar: ElementFinder;
-  private toCalendar: ElementFinder;
   private cabinTypeDropDown: ElementFinder;
+  private destinationInputField: ElementFinder;
+  private fromCalendarIcon: ElementFinder;
+  private originInputField: ElementFinder;
   private passengersAmountDropDown: ElementFinder;
-  private submitButton: ElementFinder;
   private roundTripButton: ElementFinder;
+  private submitButton: ElementFinder;
+  private toCalendarIcon: ElementFinder;
   public calendar: CalendarElement;
   public passengersAmountForm: PassengersAmountForm;
 
-  //public constructor(rootElement = $('div[data-testid$="RoundTripButton"]').element(by.xpath('/ancestor::node()[5]'))) {
   public constructor(rootElement = $('.container + div div .container')) {
-    this.originInputField = rootElement.$('input[placeholder="Origin"]');
-    this.destinationInputField = rootElement.$('input[placeholder="Destination"]');
-    this.fromCalendar = $('div[data-testid$="FromDateButton"]');
-    this.toCalendar = $('div[data-testid$="ToDateButton"]');
     this.cabinTypeDropDown = $('div[data-testid$="CabinTypeDropdown"]');
-    this.passengersAmountDropDown = $('div[data-testid$="PaxDropdown"]');
-    this.submitButton = $('button[data-testid$="SearchButton"]');
-    this.roundTripButton = rootElement.$('div[data-testid$="RoundTripButton"]');
     this.calendar = new CalendarElement();
+    this.destinationInputField = rootElement.$('input[placeholder="Destination"]');
+    this.fromCalendarIcon = $('div[data-testid$="FromDateButton"]');
+    this.originInputField = rootElement.$('input[placeholder="Origin"]');
+    this.passengersAmountDropDown = $('div[data-testid$="PaxDropdown"]');
     this.passengersAmountForm = new PassengersAmountForm();
+    this.roundTripButton = rootElement.$('div[data-testid$="RoundTripButton"]');
+    this.submitButton = $('button[data-testid$="SearchButton"]');
+    this.toCalendarIcon = $('div[data-testid$="ToDateButton"]');
   }
 
-  public async setOrigin(text: string) {
+  public async setOrigin(text: string): Promise<void> {
     await this.originInputField.sendKeys(text);
     await this.originInputField.sendKeys(protractor.Key.ENTER);
   }
 
-  public async setDestination(text: string) {
+  public async setDestination(text: string): Promise<void> {
     await this.destinationInputField.sendKeys(text);
     await this.destinationInputField.sendKeys(protractor.Key.ENTER);
   }
 
-  public async setFromDate(date: string) {
-    await this.fromCalendar.click();
+  public async setFromDate(date: string): Promise<void> {
+    await this.fromCalendarIcon.click();
     await this.calendar.selectDate(date)
   }
 
-  public async setToDate(date: string) {
-    await this.toCalendar.click();
+  public async setToDate(date: string): Promise<void> {
+    await this.toCalendarIcon.click();
     await this.calendar.selectDate(date)
 
   }
 
-  public async setNumberOfPassengers(amount: number) {
+  public async setPassengers(passengers): Promise<void> {
     await this.passengersAmountDropDown.click();
-    await this.passengersAmountForm.setAmountOfAdults(amount);
+    await this.passengersAmountForm.setPassengers(passengers);
   }
 
-  public async selectCabinType(type: string) {
+  public async selectCabinType(type: string): Promise<void> {
     await this.cabinTypeDropDown.click();
   }
 
-  public async submitForm() {
+  public async submitForm(): Promise<void> {
     await this.submitButton.click();
   }
 
-  public async selectRoundTrip() {
+  public async selectRoundTrip(): Promise<void> {
     await this.roundTripButton.click();
   }
 
-  public async fillSearchForm(flight: Flight) {
+  public async fillSearchForm(flight: Flight): Promise<void> {
     await this.selectRoundTrip();
     await this.setOrigin(flight.origin);
     await this.setDestination(flight.destination);
     await this.setFromDate(flight.fromDate);
     await this.setToDate(flight.toDate);
-    await this.setNumberOfPassengers(flight.passengers.amount);
-    await this.submitForm();
+    await this.setPassengers(flight.passengers);
   }
 }
