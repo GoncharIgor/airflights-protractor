@@ -1,7 +1,7 @@
 const moment = require('moment');
-const dateFormat = 'DD/MM/YYYY';
+const dateFormat = 'MMM DD YYYY';
 
-class DateFormatter {
+export class DateFormatter {
   /**
    * Get the current date
    * @returns {String}
@@ -32,5 +32,3 @@ class DateFormatter {
     return initialDate.add(numberOfMonths, 'M');
   }
 }
-
-module.exports = DateFormatter;

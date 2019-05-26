@@ -1,4 +1,4 @@
-import {Flight} from "../../../interfaces/Flight";
+import {Flight} from "../../../interfaces/flight";
 import {ElementFinder} from "protractor";
 
 export class SearchResultTable {

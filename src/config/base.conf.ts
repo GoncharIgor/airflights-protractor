@@ -1,5 +1,4 @@
 const AllureReporter = require('jasmine-allure-reporter');
-const del = require('del');
 const jar = require('selenium-server-standalone-jar');
 const log4js = require('log4js');
 const path = require('path');
@@ -89,9 +88,6 @@ function onPrepare() {
       browser.logger.info(`- - TEST SCENARIO FINISHED - - ${result.description} with result: ${result.status.toUpperCase()}`);
     }
   });
-
-  // clean allure xmls from previous run
-  del([allureResultsPath], {force: true});
 }
 
 function onComplete() {

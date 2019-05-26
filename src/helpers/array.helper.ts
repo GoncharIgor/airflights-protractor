@@ -1,4 +1,4 @@
-export class ArrayHelpers {
+export class ArrayHelper {
 
   public static arraysEqual(a, b) {
     if (a === b) {

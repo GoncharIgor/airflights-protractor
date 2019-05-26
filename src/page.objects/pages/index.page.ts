@@ -1,5 +1,5 @@
-import {BasePage} from './BasePage';
-import {FlightsSearchForm} from '../components/FlightsSearchForm';
+import {BasePage} from './base.page';
+import {FlightsSearchForm} from '../components/index/flights.search.form';
 
 export default class IndexPage extends BasePage {
   public searchForm: FlightsSearchForm;

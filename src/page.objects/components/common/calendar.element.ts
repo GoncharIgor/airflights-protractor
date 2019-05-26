@@ -3,7 +3,7 @@ import {$, $$, browser, by, ElementArrayFinder, ElementFinder} from "protractor"
 const dateMMFormat = 'MMM DD YYYY';
 const formattedDateRegEx = /^(\D{3})\/(\d{1,2})\/(\d{4})$/;
 
-export class Calendar {
+export class CalendarElement {
   private  calendarField: ElementFinder;
   private  currentMonth: ElementFinder;
   private  nextMonth: ElementFinder;

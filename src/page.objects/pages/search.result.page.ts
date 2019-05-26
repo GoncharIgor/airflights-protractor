@@ -1,4 +1,4 @@
-import {BasePage} from './BasePage';
+import {BasePage} from './base.page';
 import {$, browser, protractor} from "protractor";
 
 const EC = protractor.ExpectedConditions;

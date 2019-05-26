@@ -1,6 +1,6 @@
-import IndexPage from '../page.objects/pages/IndexPage';
-import SearchResultPage from '../page.objects/pages/SearchResultPage';
-import {Flight} from "../interfaces/Flight";
+import IndexPage from '../page.objects/pages/index.page';
+import SearchResultPage from '../page.objects/pages/search.result.page';
+import {Flight} from "../interfaces/flight";
 import {browser} from "protractor";
 
 describe('INDEX page', () => {

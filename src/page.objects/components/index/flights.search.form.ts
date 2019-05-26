@@ -1,6 +1,6 @@
 import {$, by, ElementFinder, protractor} from 'protractor';
-import {Flight} from "../../interfaces/Flight";
-import {Calendar} from "./common/calendar";
+import {Flight} from "../../../interfaces/flight";
+import {CalendarElement} from "../common/calendar.element";
 import {PassengersAmountForm} from "./passengers.amount.form";
 
 export class FlightsSearchForm {
@@ -12,7 +12,7 @@ export class FlightsSearchForm {
   private passengersAmountDropDown: ElementFinder;
   private submitButton: ElementFinder;
   private roundTripButton: ElementFinder;
-  public calendar: Calendar;
+  public calendar: CalendarElement;
   public passengersAmountForm: PassengersAmountForm;
 
   //public constructor(rootElement = $('div[data-testid$="RoundTripButton"]').element(by.xpath('/ancestor::node()[5]'))) {
@@ -25,7 +25,7 @@ export class FlightsSearchForm {
     this.passengersAmountDropDown = $('div[data-testid$="PaxDropdown"]');
     this.submitButton = $('button[data-testid$="SearchButton"]');
     this.roundTripButton = rootElement.$('div[data-testid$="RoundTripButton"]');
-    this.calendar = new Calendar();
+    this.calendar = new CalendarElement();
     this.passengersAmountForm = new PassengersAmountForm();
   }
 
@@ -50,7 +50,7 @@ export class FlightsSearchForm {
 
   }
 
-  public async setNumberOfPassangers(amount: number) {
+  public async setNumberOfPassengers(amount: number) {
     await this.passengersAmountDropDown.click();
     await this.passengersAmountForm.setAmountOfAdults(amount);
   }
@@ -73,7 +73,7 @@ export class FlightsSearchForm {
     await this.setDestination(flight.destination);
     await this.setFromDate(flight.fromDate);
     await this.setToDate(flight.toDate);
-    await this.setNumberOfPassangers(flight.passengersAmount);
+    await this.setNumberOfPassengers(flight.passengers.amount);
     await this.submitForm();
   }
 }

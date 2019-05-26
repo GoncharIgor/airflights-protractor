@@ -6,7 +6,7 @@ export class PassengersAmountForm {
   private infantsRow: ElementFinder;
   private rootELement: ElementFinder;
   private readonly minusButtonSelector = 'MinusButton';
-  private readonly passangersCountSelector = 'CountLabel';
+  private readonly passengersCountSelector = 'CountLabel';
   private readonly plusButtonSelector = 'PlusButton';
 
   public constructor(rootElement = $('.FlightSearchBox__PaxCounterMenu')) {
