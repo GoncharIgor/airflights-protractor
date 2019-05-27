@@ -20,6 +20,7 @@
     "protractor-jasmine2-screenshot-reporter": "^0.5.0",
     "pre-commit": "^1.2.2",
     "protractor": "5.4.2",
+    "protractor-element-extend": "2.1.0",
     "protractor-flake": "4.0.0",
     "protractor-helpers": "1.1.527",
     "q": "1.5.1",
@@ -43,7 +44,7 @@
     "copy-jsons": "copyfiles -u 1 **/src/**/*.json target/src",
     "test": "npm run clean-build && node src/config/flake.ts target/src/config/chrome.conf.js",
     "wd-status": "node node_modules/protractor/bin/webdriver-manager status",
-    "wd-update-chrome": "node node_modules/protractor/bin/webdriver-manager update --versions.chrome=2.44 --gecko false",
+    "wd-update-chrome": "node node_modules/protractor/bin/webdriver-manager update --versions.chrome=74.0.3729.6 --gecko false",
     "wd-update-firefox": "node node_modules/protractor/bin/webdriver-manager update --versions.gecko=v0.24.0",
     "wd-update-ie": "node node_modules/protractor/bin/webdriver-manager update --ie --gecko false"
   },

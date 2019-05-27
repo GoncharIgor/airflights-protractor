@@ -6,7 +6,7 @@ import {browser} from "protractor";
 describe('INDEX page', () => {
   const indexPage = new IndexPage();
   const searchResultPage = new SearchResultPage();
-  const data: Flight = Object.assign(require('../test.data/kyiv-barcelona.flight.json'));
+  const data: Flight = Object.assign(require('../test.data/sydney-doha.flight.json'));
 
   beforeEach(async () => {
     await browser.manage().deleteAllCookies();

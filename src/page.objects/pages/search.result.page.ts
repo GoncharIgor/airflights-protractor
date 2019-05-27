@@ -20,8 +20,8 @@ export default class SearchResultPage extends BasePage {
   }
 
   async waitForResultsToLoad(): Promise<boolean> {
-    await browser.wait(EC.presenceOf(this.modifySearchButton), 30000);
-    //await browser.wait(EC.not(EC.presenceOf(this.loadingTextLabel)), 30000);
+    await this.waitUntilElementVisible(this.modifySearchButton, 30000);
+    await this.waitUntilElementNotVisible(this.loadingTextLabel, 30000);
     await browser.logger.info('Page with flights search result was loaded');
     return await this.modifySearchButton.isDisplayed();
   }

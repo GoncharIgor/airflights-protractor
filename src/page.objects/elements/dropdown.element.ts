@@ -1,6 +1,5 @@
 import {$$, browser, by, element} from "protractor";
-
-const BaseFragment = require('./base.fragment').BaseFragment;
+import {BaseFragment} from 'protractor-element-extend';
 
 export class DropDown extends BaseFragment {
   constructor(rootElement, optOptionElementName) {

@@ -1,8 +1,9 @@
 import {$, $$, browser, by, ElementArrayFinder, ElementFinder} from "protractor";
+import {BaseFragment} from 'protractor-element-extend';
 
 const dateMMFormat = 'MMM DD YYYY';
 
-export class CalendarElement {
+export class CalendarElement extends BaseFragment{
   private readonly monthWrapperSelector = '.DayPicker-Month';
   private readonly monthDropdownSelector = '.DayPicker-Caption > div > div';
   private readonly activeDatesSelector = '.DayPicker-Month div[aria-disabled=false]';
@@ -15,6 +16,7 @@ export class CalendarElement {
   private rootElement: ElementFinder;
 
   constructor(rootElement = $('.DayPicker-wrapper')) {
+    super(rootElement);
     this.rootElement = rootElement;
     this.activeDates = rootElement.$$(this.activeDatesSelector);
     this.currentMonth = rootElement.$$(this.monthWrapperSelector).get(0);

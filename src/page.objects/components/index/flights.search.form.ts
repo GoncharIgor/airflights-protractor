@@ -1,5 +1,5 @@
 import {$, ElementFinder, protractor} from 'protractor';
-import {CalendarElement} from "../common/calendar.element";
+import {CalendarElement} from "../../elements/calendar.element";
 import {Flight} from "../../../interfaces/flight";
 import {PassengersAmountForm} from "./passengers.amount.form";
 
