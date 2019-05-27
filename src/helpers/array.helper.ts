@@ -36,4 +36,8 @@ export class ArrayHelper {
 
     return result;
   }
+
+  public static getRandomValueFromArray(array) {
+    return array[Math.floor(Math.random() * array.length)];
+  }
 }

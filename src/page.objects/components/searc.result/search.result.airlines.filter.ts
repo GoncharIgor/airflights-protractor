@@ -1,8 +1,10 @@
 import {$$, browser, by, element, ElementArrayFinder, ElementFinder} from "protractor";
 import {ElementFinderHelper} from '../../../helpers/element.finder.helper';
+import {ArrayHelper} from '../../../helpers/array.helper';
 
 export class SearchResultAirlinesFilter {
   public readonly EMIRATES_CARRIER_NAME = 'EK: Emirates';
+  public readonly carriersOriginListSelector = '//*[@id="root"]/div[3]/div[1]/div[2]/div/div[7]/div[2]/div[2]//label';
 
   private rootElement: ElementFinder;
   private carriersOriginList: ElementArrayFinder;
@@ -10,7 +12,7 @@ export class SearchResultAirlinesFilter {
 
   constructor(rootElement = element(by.xpath('//*[@id="root"]/div[3]/div[1]/div[2]/div/div[7]'))) {
     this.rootElement = rootElement;
-    this.carriersOriginList = element.all(by.xpath('//*[@id="root"]/div[3]/div[1]/div[2]/div/div[7]/div[2]/div[2]//label'));
+    this.carriersOriginList = element.all(by.xpath(this.carriersOriginListSelector));
     this.carriersOriginExpandLink = rootElement.element(by.xpath('div[2]/div[2]//a'));
   }
 
@@ -26,9 +28,7 @@ export class SearchResultAirlinesFilter {
   public async checkCarrierIsPresentInOriginList(carrierName: string) {
     await this.expandCarriersOriginList();
     const carriersList = await this.getAllCarriersOriginList();
-    console.log(carriersList);
-    const res = carriersList.includes(carrierName);
-    console.log(res);
+    return carriersList.includes(carrierName);
   }
 
   private async checkCarriersOriginListIsExpanded(): Promise<boolean> {
@@ -40,8 +40,13 @@ export class SearchResultAirlinesFilter {
     return await this.carriersOriginList.getText();
   }
 
+  public async getRandomCarrier() {
+    const carriersList = await this.getAllCarriersOriginList();
+    return ArrayHelper.getRandomValueFromArray(carriersList);
+  }
+
   public async selectCarrierOrigin(carrierName: string) {
-    // const optionLocator = element(by.cssContainingText(this.openStateLocator, optionName));
-    // return await optionLocator.isPresent();
+    const optionLocator = await element(by.xpath((`${this.carriersOriginListSelector}[contains(text(),"${carrierName}")]`)));
+    await optionLocator.click();
   }
 }
