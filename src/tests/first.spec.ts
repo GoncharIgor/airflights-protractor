@@ -3,7 +3,7 @@ import SearchResultPage from '../page.objects/pages/search.result.page';
 import {Flight} from "../interfaces/flight";
 import {browser} from "protractor";
 
-describe('INDEX page', () => {
+describe('Flight checkout', () => {
   const indexPage = new IndexPage();
   const searchResultPage = new SearchResultPage();
   const data: Flight = Object.assign(require('../test.data/sydney-doha.flight.json'));
@@ -13,10 +13,13 @@ describe('INDEX page', () => {
     await indexPage.openPage();
   });
 
-  it('should have the right title', async () => {
+  it('WHEN user searches for flight ' +
+    'AND enters valid passenger data ' +
+    'THEN final details page is opened', async () => {
     await indexPage.searchFlight(data);
     await searchResultPage.waitForResultsToLoad();
-    await searchResultPage.searchResultAirlinesFilter.checkCarrierIsPresentInOriginList('AF: Air France');
+    await searchResultPage.searchResultTable.sortPriceAsc();
+
   });
 
   afterEach(async () => {

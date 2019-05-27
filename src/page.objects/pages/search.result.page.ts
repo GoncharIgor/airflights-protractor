@@ -7,7 +7,7 @@ import {SearchResultTable} from '../components/searc.result/search.result.table'
 export default class SearchResultPage extends BasePage {
   private modifySearchButton = $('button[data-testid$="FlightSearchResults__ModifySearchButton"]');
   private loadingTextLabel = element(by.xpath('//div[contains(text(),"Getting the best deals from over")]'));
-  private searchResultTable: SearchResultTable;
+  public searchResultTable: SearchResultTable;
   public searchResultAirlinesFilter: SearchResultAirlinesFilter;
 
   constructor() {

@@ -1,4 +1,4 @@
-import {$$, browser, by, element, ElementArrayFinder, ElementFinder} from "protractor";
+import {$$, by, element, ElementArrayFinder, ElementFinder} from "protractor";
 import {ElementFinderHelper} from '../../../helpers/element.finder.helper';
 import {ArrayHelper} from '../../../helpers/array.helper';
 
