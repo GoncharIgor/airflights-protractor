@@ -16,7 +16,7 @@ describe('INDEX page', () => {
   it('should have the right title', async () => {
     await indexPage.searchFlight(data);
     await searchResultPage.waitForResultsToLoad();
-    await searchResultPage.searchResultFilter.checkCarrierIsPresentInTheList('AF: Air France');
+    await searchResultPage.searchResultAirlinesFilter.checkCarrierIsPresentInOriginList('AF: Air France');
   });
 
   afterEach(async () => {

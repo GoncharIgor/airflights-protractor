@@ -1,21 +1,19 @@
 import {$, browser, by, element, protractor} from "protractor";
 
 import {BasePage} from './base.page';
-import {SearchResultFilter} from '../components/searc.result/search.result.filter';
+import {SearchResultAirlinesFilter} from '../components/searc.result/search.result.airlines.filter';
 import {SearchResultTable} from '../components/searc.result/search.result.table';
-
-const EC = protractor.ExpectedConditions;
 
 export default class SearchResultPage extends BasePage {
   private modifySearchButton = $('button[data-testid$="FlightSearchResults__ModifySearchButton"]');
   private loadingTextLabel = element(by.xpath('//div[contains(text(),"Getting the best deals from over")]'));
   private searchResultTable: SearchResultTable;
-  public searchResultFilter: SearchResultFilter;
+  public searchResultAirlinesFilter: SearchResultAirlinesFilter;
 
   constructor() {
     super();
     this.searchResultTable = new SearchResultTable();
-    this.searchResultFilter = new SearchResultFilter();
+    this.searchResultAirlinesFilter = new SearchResultAirlinesFilter();
 
   }
 
