@@ -21,22 +21,11 @@ export class ArrayHelper {
     return true;
   }
 
-  public static splitStringIntoArrayByAndGetIndex(text, by, index) {
-    let result;
-    text = text.split(by);
-
-    if (index === 'last') {
-      result = text[text.length - 1];
-    } else if (index === 'first') {
-      result = text[0];
-    } else {
-      result = text[index];
-    }
-
-    return result;
+  public static checkArrayIsSorted(incomingArray): boolean {
+    return !!incomingArray.reduce((n, item) => n !== false && item >= n && item);
   }
 
-  public static getRandomValueFromArray(array) {
+  public static getRandomValueFromArray(array): any {
     return array[Math.floor(Math.random() * array.length)];
   }
 }

@@ -1,4 +1,4 @@
-import {$, $$, browser, ElementArrayFinder, ElementFinder} from 'protractor';
+import {$, $$, browser, ElementArrayFinder, ElementFinder, promise} from 'protractor';
 
 import {ElementFinderHelper} from '../../../helpers/element.finder.helper';
 
@@ -10,18 +10,17 @@ export class SearchResultTable {
 
   private flightRows: ElementArrayFinder;
   private resultsTableHeader: ElementFinder;
-  private rootElement: ElementFinder;
   private sortingPriceLink: ElementFinder;
 
-  constructor(rootElement = $('.ReactVirtualized__Grid__innerScrollContainer')) {
-    this.rootElement = rootElement;
-    this.flightRows = rootElement.$$(this.flightRowSelector);
+  constructor() {
+    this.flightRows = $$(this.flightRowSelector);
     this.resultsTableHeader = $$('.row .col-9 > div').get(2);
     this.sortingPriceLink = $('a[data-testid^="FlightSearchResult__Sorting__Price"]');
   }
 
   public async sortPriceAsc() {
     await browser.logger.info('Prices were sorted ASC');
+    await ElementFinderHelper.waitUntilElementVisible(this.sortingPriceLink);
     await ElementFinderHelper.scrollToTheElement(this.sortingPriceLink);
     const status = await this.sortingPriceLink.getAttribute('data-testid');
     if (status.endsWith('LowestFirstSelected')) {
@@ -36,10 +35,14 @@ export class SearchResultTable {
   }
 
   public async selectFlightByIndex(index: number) {
-    await this.rootElement.$$(`${this.flightRowSelector} button`).get(index).click();
+    await $$(`${this.flightRowSelector} button`).get(index).click();
   }
 
-  public async getAllPrices() {
-    return await this.rootElement.$$(`${this.flightRowSelector} ${this.flightPriceLocator}`).getText();
+  public async getAllPrices(): Promise<any> {
+    const prices: any = await $$(`${this.flightRowSelector} ${this.flightPriceLocator}`).getText();
+    prices.forEach((e, index, arr) => {
+      arr[index] = e.replace(',', '');
+    });
+    return prices;
   }
 }

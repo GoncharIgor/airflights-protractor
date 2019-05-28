@@ -20,6 +20,7 @@ describe('Flight checkout', () => {
     await searchResultPage.waitForResultsToLoad();
 
     await searchResultPage.searchResultTable.sortPriceAsc();
-    await searchResultPage.selectFlight(0);
+    await searchResultPage.searchResultTable.getAllPrices();
+    await searchResultPage.exportFlightPricesToCsv();
   });
 });

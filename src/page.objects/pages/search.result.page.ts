@@ -3,6 +3,7 @@ import {$, browser, by, element} from 'protractor';
 import {SearchResultAirlinesFilter} from '../components/searc.result/search.result.airlines.filter';
 import {SearchResultTable} from '../components/searc.result/search.result.table';
 import {BasePage} from './base.page';
+import {FileHelper} from '../../helpers/file.helper';
 
 export default class SearchResultPage extends BasePage {
   public readonly searchResultTable: SearchResultTable = new SearchResultTable();
@@ -12,8 +13,8 @@ export default class SearchResultPage extends BasePage {
   private readonly loadingTextLabel = element(by.xpath('//div[contains(text(),"Getting the best deals from over")]'));
 
   public async waitForResultsToLoad(): Promise<boolean> {
-    await this.waitUntilElementVisible(this.modifySearchButton, 30000);
-    await this.waitUntilElementNotVisible(this.loadingTextLabel, 30000);
+    await this.waitUntilElementVisible(this.modifySearchButton, 40000);
+    await this.waitUntilElementNotVisible(this.loadingTextLabel, 40000);
     await browser.logger.info('Page with flights search result was loaded');
     return await this.modifySearchButton.isDisplayed();
   }
@@ -26,5 +27,10 @@ export default class SearchResultPage extends BasePage {
   public async selectFlight(index: number) {
     await browser.logger.info('Selecting flight by index:', index);
     await this.searchResultTable.selectFlightByIndex(index);
+  }
+
+  public async exportFlightPricesToCsv() {
+    const prices = await this.searchResultTable.getAllPrices();
+    await FileHelper.writeFile(prices, 'pricesAsc.csv');
   }
 }
