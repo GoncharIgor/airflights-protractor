@@ -43,6 +43,8 @@
     "clean-build": "npm run clean && npm run build && npm run copy-jsons",
     "copy-jsons": "copyfiles -u 1 **/src/**/*.json target/src",
     "test": "npm run clean-build && node src/config/flake.ts target/src/config/chrome.conf.js",
+    "lint": "tslint src/**/*.ts",
+    "lint-fix": "tslint src/**/*.ts --fix",
     "wd-status": "node node_modules/protractor/bin/webdriver-manager status",
     "wd-update-chrome": "node node_modules/protractor/bin/webdriver-manager update --versions.chrome=74.0.3729.6 --gecko false",
     "wd-update-firefox": "node node_modules/protractor/bin/webdriver-manager update --versions.gecko=v0.24.0",

@@ -3,6 +3,9 @@
   "extends": [
     "tslint:recommended"
   ],
+  "exclude": [
+    "target"
+  ],
   "member-access": false,
   "jsRules": {},
   "rules": {
@@ -10,6 +13,7 @@
       true,
       "single"
     ],
+    "max-line-length": [ false ],
     "no-var-requires": false,
     "no-console": true,
     "object-literal-sort-keys": false,

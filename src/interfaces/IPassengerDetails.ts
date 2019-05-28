@@ -1,4 +1,4 @@
-export interface PassengerDetails {
+export interface IPassengerDetails {
   sex: string;
   firstName: string;
   middleName?: string;

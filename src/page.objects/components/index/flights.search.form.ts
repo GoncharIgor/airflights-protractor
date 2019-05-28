@@ -1,9 +1,11 @@
-import {$, ElementFinder, protractor} from 'protractor';
-import {CalendarElement} from "../../elements/calendar.element";
-import {Flight} from "../../../interfaces/flight";
-import {PassengersAmountForm} from "./passengers.amount.form";
+import {$, browser, ElementFinder, protractor} from 'protractor';
+import {IFlight} from '../../../interfaces/IFlight';
+import {CalendarElement} from '../../elements/calendar.element';
+import {PassengersAmountForm} from './passengers.amount.form';
 
 export class FlightsSearchForm {
+  public calendar: CalendarElement;
+  public passengersAmountForm: PassengersAmountForm;
   private cabinTypeDropDown: ElementFinder;
   private destinationInputField: ElementFinder;
   private fromCalendarIcon: ElementFinder;
@@ -12,8 +14,6 @@ export class FlightsSearchForm {
   private roundTripButton: ElementFinder;
   private submitButton: ElementFinder;
   private toCalendarIcon: ElementFinder;
-  public calendar: CalendarElement;
-  public passengersAmountForm: PassengersAmountForm;
 
   public constructor(rootElement = $('.container + div div .container')) {
     this.cabinTypeDropDown = $('div[data-testid$="CabinTypeDropdown"]');
@@ -31,31 +31,37 @@ export class FlightsSearchForm {
   public async setOrigin(text: string): Promise<void> {
     await this.originInputField.sendKeys(text);
     await this.originInputField.sendKeys(protractor.Key.ENTER);
+    await browser.logger.info('IFlight origin was set to: ', text);
   }
 
   public async setDestination(text: string): Promise<void> {
     await this.destinationInputField.sendKeys(text);
     await this.destinationInputField.sendKeys(protractor.Key.ENTER);
+    await browser.logger.info('IFlight origin was set to: ', text);
   }
 
   public async setFromDate(date: string): Promise<void> {
     await this.fromCalendarIcon.click();
-    await this.calendar.selectDate(date)
+    await this.calendar.selectDate(date);
+    await browser.logger.info('From date was set to: ', date);
   }
 
   public async setToDate(date: string): Promise<void> {
     await this.toCalendarIcon.click();
-    await this.calendar.selectDate(date)
+    await this.calendar.selectDate(date);
+    await browser.logger.info('End date was set to: ', date);
 
   }
 
   public async setPassengers(passengers): Promise<void> {
     await this.passengersAmountDropDown.click();
     await this.passengersAmountForm.setPassengers(passengers);
+    await browser.logger.info(`Passengers were set in amount of: ${passengers.amount}`);
   }
 
   public async selectCabinType(type: string): Promise<void> {
     await this.cabinTypeDropDown.click();
+    await browser.logger.info('Cabin type was selected: ', type);
   }
 
   public async submitForm(): Promise<void> {
@@ -64,9 +70,10 @@ export class FlightsSearchForm {
 
   public async selectRoundTrip(): Promise<void> {
     await this.roundTripButton.click();
+    await browser.logger.info('Round trip option was selected');
   }
 
-  public async fillSearchForm(flight: Flight): Promise<void> {
+  public async fillSearchForm(flight: IFlight): Promise<void> {
     await this.selectRoundTrip();
     await this.setOrigin(flight.origin);
     await this.setDestination(flight.destination);

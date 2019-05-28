@@ -1,4 +1,4 @@
-import {browser} from "protractor";
+import {browser} from 'protractor';
 const fs = require('fs');
 
 const exportedFilesDir = browser.params.exportedFilesPath;
@@ -13,8 +13,7 @@ export class FileHelper {
     fs.writeFile(`${exportedFilesDir}/${fileName}`, data, (err) => {
       if (err) {
         browser.logger.error(err);
-      }
-      else {
+      } else {
         browser.logger.info(`${fileName} file was saved`);
       }
     });

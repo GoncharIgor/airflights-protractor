@@ -1,12 +1,12 @@
+import {browser} from 'protractor';
+import {IFlight} from '../interfaces/IFlight';
 import IndexPage from '../page.objects/pages/index.page';
 import SearchResultPage from '../page.objects/pages/search.result.page';
-import {Flight} from "../interfaces/flight";
-import {browser} from "protractor";
 
-describe('Flight checkout', () => {
+describe('IFlight checkout', () => {
   const indexPage = new IndexPage();
   const searchResultPage = new SearchResultPage();
-  const data: Flight = Object.assign(require('../test.data/sydney-doha.flight.json'));
+  const data: IFlight = Object.assign(require('../test.data/sydney-doha.flight.json'));
 
   beforeEach(async () => {
     await browser.manage().deleteAllCookies();
@@ -20,9 +20,11 @@ describe('Flight checkout', () => {
     await searchResultPage.waitForResultsToLoad();
     await searchResultPage.searchResultTable.sortPriceAsc();
 
+    await browser.sleep(5000);
+    // console.log(await searchResultPage.searchResultTable.getAllPrices());
   });
 
   afterEach(async () => {
     // await browser.deleteSession();
-  })
+  });
 });

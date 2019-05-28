@@ -13,7 +13,6 @@ export class ArrayHelper {
 
     // If you don't care about the order of the elements inside
     // the array, you should sort both arrays here.
-
     for (let i = 0; i < a.length; ++i) {
       if (a[i] !== b[i]) {
         return false;

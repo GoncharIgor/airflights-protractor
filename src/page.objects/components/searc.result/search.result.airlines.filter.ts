@@ -1,6 +1,6 @@
-import {$$, by, element, ElementArrayFinder, ElementFinder} from "protractor";
-import {ElementFinderHelper} from '../../../helpers/element.finder.helper';
+import {$$, by, element, ElementArrayFinder, ElementFinder} from 'protractor';
 import {ArrayHelper} from '../../../helpers/array.helper';
+import {ElementFinderHelper} from '../../../helpers/element.finder.helper';
 
 export class SearchResultAirlinesFilter {
   public readonly EMIRATES_CARRIER_NAME = 'EK: Emirates';
@@ -31,6 +31,17 @@ export class SearchResultAirlinesFilter {
     return carriersList.includes(carrierName);
   }
 
+  public async getRandomCarrier() {
+    const carriersList = await this.getAllCarriersOriginList();
+    return ArrayHelper.getRandomValueFromArray(carriersList);
+  }
+
+  public async selectCarrierOrigin(carrierName: string) {
+    const optionLocator =
+      await element(by.xpath((`${this.carriersOriginListSelector}[contains(text(),"${carrierName}")]`)));
+    await optionLocator.click();
+  }
+
   private async checkCarriersOriginListIsExpanded(): Promise<boolean> {
     const linkText = await this.carriersOriginExpandLink.getText();
     return linkText.startsWith('Show less');
@@ -38,15 +49,5 @@ export class SearchResultAirlinesFilter {
 
   private async getAllCarriersOriginList() {
     return await this.carriersOriginList.getText();
-  }
-
-  public async getRandomCarrier() {
-    const carriersList = await this.getAllCarriersOriginList();
-    return ArrayHelper.getRandomValueFromArray(carriersList);
-  }
-
-  public async selectCarrierOrigin(carrierName: string) {
-    const optionLocator = await element(by.xpath((`${this.carriersOriginListSelector}[contains(text(),"${carrierName}")]`)));
-    await optionLocator.click();
   }
 }

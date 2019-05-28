@@ -1,4 +1,4 @@
-import {browser} from "protractor";
+import {browser} from 'protractor';
 
 const fs = require('fs');
 const PNG = require('pngjs').PNG;
@@ -27,25 +27,27 @@ class ImageHelper {
    * @param {string} [outFile] - The string containing two comma-separated numbers.
    * @return {Object} - object with comparison result
    * {
-	 *   misMatchPercentage : 100, // %
-	 *   isSameDimensions: true, // or false
-	 *   dimensionDifference: { width: 0, height: -1 }, // defined if dimensions are not the same
-	 *   getImageDataUrl: function(){}
-	 * }
+   * misMatchPercentage : 100, // %
+   * isSameDimensions: true, // or false
+   * dimensionDifference: { width: 0, height: -1 }, // defined if dimensions are not the same
+   * getImageDataUrl: function(){}
+   * }
    */
-  compare(img1, img2, outFile) {
+  public compare(img1, img2, outFile) {
     return new Promise((resolve, reject) => {
       try {
         resemble(img1).compareTo(img2).onComplete((diff) => {
           try {
-            if (outFile) fs.writeFileSync(outFile, diff.getDiffImageAsJPEG());
+            if (outFile) {
+              fs.writeFileSync(outFile, diff.getDiffImageAsJPEG());
+            }
             resolve(diff);
           } catch (e) {
-            reject(e)
+            reject(e);
           }
         });
       } catch (e) {
-        reject(e)
+        reject(e);
       }
     });
   }
@@ -57,13 +59,13 @@ class ImageHelper {
    * Resolution: .png
    * @return {Object} - object with size parameters
    */
-  async takeScreenshotOfTheElement(element, fileName) {
+  public async takeScreenshotOfTheElement(element, fileName) {
     const elementLocation = await element.getLocation();
     const elementSize = await element.getSize();
     const screenshot = await browser.takeScreenshot();
 
-    let src = PNG.sync.read(Buffer.from(screenshot, 'base64'));
-    let dst = new PNG({width: elementSize.width, height: elementSize.height});
+    const src = PNG.sync.read(Buffer.from(screenshot, 'base64'));
+    const dst = new PNG({width: elementSize.width, height: elementSize.height});
     PNG.bitblt(src, dst, elementLocation.x, elementLocation.y, dst.width, dst.height, 0, 0);
     if (!fs.existsSync(this.screenshotsTargetPath)) {
       fs.mkdirSync(this.screenshotsTargetPath);

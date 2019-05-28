@@ -84,15 +84,18 @@ function onPrepare() {
   // efg custom reporter
   jasmine.getEnv().addReporter({
     suiteStarted: (result) => {
-      browser.logger.info(`- - - - SUITE STARTED - - - - ${result.description}`);
+      browser.logger
+        .info(`- - - - SUITE STARTED - - - - ${result.description}`);
     },
 
     specStarted: (result) => {
-      browser.logger.info(`- - TEST SCENARIO STARTED - - ${result.description}`);
+      browser.logger
+        .info(`- - TEST SCENARIO STARTED - - ${result.description}`);
     },
 
     specDone: (result) => {
-      browser.logger.info(`- - TEST SCENARIO FINISHED - - ${result.description} with result: ${result.status.toUpperCase()}`);
+      browser.logger
+        .info(`- - TEST SCENARIO FINISHED - - ${result.description} with result: ${result.status.toUpperCase()}`);
     }
   });
 }

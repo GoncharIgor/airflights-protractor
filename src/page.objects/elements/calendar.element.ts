@@ -1,9 +1,9 @@
-import {$, $$, browser, by, ElementArrayFinder, ElementFinder} from "protractor";
+import {$, $$, browser, by, ElementArrayFinder, ElementFinder} from 'protractor';
 import {BaseFragment} from 'protractor-element-extend';
 
 const dateMMFormat = 'MMM DD YYYY';
 
-export class CalendarElement extends BaseFragment{
+export class CalendarElement extends BaseFragment {
   private readonly monthWrapperSelector = '.DayPicker-Month';
   private readonly monthDropdownSelector = '.DayPicker-Caption > div > div';
   private readonly activeDatesSelector = '.DayPicker-Month div[aria-disabled=false]';
@@ -25,7 +25,7 @@ export class CalendarElement extends BaseFragment{
     this.currentYearDropdown = this.currentMonth.$$(this.monthDropdownSelector).get(1);
   }
 
-  async selectDate(date): Promise<void> {
+  public async selectDate(date): Promise<void> {
     const day = this.rootElement.$$(`${this.activeDatesSelector}[aria-label$="${date}"]`).get(0);
     await day.click();
   }

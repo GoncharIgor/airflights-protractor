@@ -11,7 +11,7 @@ export const config = _.merge(computersBaseConfig, {
         '--test-type=browser',
         'disable-extensions',
         '--disable-infobars',
-        "--disable-browser-side-navigation"
+        '--disable-browser-side-navigation'
       ],
       prefs: {
         'plugins.always_open_pdf_externally': true,

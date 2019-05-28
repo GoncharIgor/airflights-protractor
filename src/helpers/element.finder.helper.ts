@@ -1,4 +1,4 @@
-import {browser, ElementFinder, protractor} from "protractor";
+import {browser, ElementFinder, protractor} from 'protractor';
 
 const EC = protractor.ExpectedConditions;
 
@@ -38,7 +38,7 @@ export class ElementFinderHelper {
   }
 
   public static async highlightElement(el: ElementFinder): Promise<void> {
-    await browser.driver.executeScript("arguments[0].setAttribute('style', arguments[1]);",
-      el.getWebElement(), "color: Red; border: 2px solid red;");
+    await browser.driver.executeScript('arguments[0].setAttribute(\'style\', arguments[1]);',
+      el.getWebElement(), 'color: Red; border: 2px solid red;');
   }
 }

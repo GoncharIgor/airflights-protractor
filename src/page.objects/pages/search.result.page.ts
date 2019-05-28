@@ -1,25 +1,19 @@
-import {$, browser, by, element, protractor} from "protractor";
+import {$, browser, by, element} from 'protractor';
 
-import {BasePage} from './base.page';
 import {SearchResultAirlinesFilter} from '../components/searc.result/search.result.airlines.filter';
 import {SearchResultTable} from '../components/searc.result/search.result.table';
+import {BasePage} from './base.page';
 
 export default class SearchResultPage extends BasePage {
-  private modifySearchButton = $('button[data-testid$="FlightSearchResults__ModifySearchButton"]');
-  private loadingTextLabel = element(by.xpath('//div[contains(text(),"Getting the best deals from over")]'));
-  public searchResultTable: SearchResultTable;
-  public searchResultAirlinesFilter: SearchResultAirlinesFilter;
+  public readonly searchResultTable: SearchResultTable = new SearchResultTable();
+  public readonly searchResultAirlinesFilter: SearchResultAirlinesFilter = new SearchResultAirlinesFilter();
 
-  constructor() {
-    super();
-    this.searchResultTable = new SearchResultTable();
-    this.searchResultAirlinesFilter = new SearchResultAirlinesFilter();
+  private readonly modifySearchButton = $('button[data-testid$="FlightSearchResults__ModifySearchButton"]');
+  private readonly loadingTextLabel = element(by.xpath('//div[contains(text(),"Getting the best deals from over")]'));
 
-  }
-
-  async waitForResultsToLoad(): Promise<boolean> {
-    await this.waitUntilElementVisible(this.modifySearchButton, 30000);
-    await this.waitUntilElementNotVisible(this.loadingTextLabel, 30000);
+  public async waitForResultsToLoad(): Promise<boolean> {
+    await this.waitUntilElementVisible(this.modifySearchButton, 40000);
+    await this.waitUntilElementNotVisible(this.loadingTextLabel, 40000);
     await browser.logger.info('Page with flights search result was loaded');
     return await this.modifySearchButton.isDisplayed();
   }

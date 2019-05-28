@@ -1,10 +1,10 @@
-import {Passengers} from "./passengers";
+import {IPassengers} from './IPassengers';
 
-export interface Flight {
+export interface IFlight {
   origin: string;
   destination: string;
   fromDate: string;
   toDate: string;
   cabinType: string;
-  passengers: Passengers
+  passengers: IPassengers;
 }

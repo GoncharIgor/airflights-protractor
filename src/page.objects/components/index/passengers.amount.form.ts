@@ -1,5 +1,5 @@
 import {$, by, ElementFinder, protractor} from 'protractor';
-import {Passengers} from "../../../interfaces/passengers";
+import {IPassengers} from '../../../interfaces/IPassengers';
 
 export class PassengersAmountForm {
   private readonly countLabelSelector = 'div[data-testid$="CountLabel"]';
@@ -16,7 +16,7 @@ export class PassengersAmountForm {
     this.infantsRow = rootElement.$('> div:nth-child(3)');
   }
 
-  public async setPassengers(passengers: Passengers): Promise<void> {
+  public async setPassengers(passengers: IPassengers): Promise<void> {
     for (let i = 1; i < passengers.amount; i++) {
       await this.rootELement.$(`div[data-testid$="${passengers.category}PlusButton"]`).click();
     }
