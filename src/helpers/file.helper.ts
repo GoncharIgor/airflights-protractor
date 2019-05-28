@@ -1,6 +1,5 @@
 import * as path from 'path';
 import {browser} from 'protractor';
-
 const fs = require('fs');
 
 const exportedFilesDir = browser.params.exportedFilesPath;

@@ -1,5 +1,6 @@
 import {$, browser, ElementFinder, protractor} from 'protractor';
 import {ElementFinderHelper} from '../../helpers/element.finder.helper';
+import {FileHelper} from "../../helpers/file.helper";
 
 export abstract class BasePage {
 
@@ -29,5 +30,10 @@ export abstract class BasePage {
 
   public async clickTab(): Promise<void> {
     await $('body').sendKeys(protractor.Key.TAB);
+  }
+
+
+  public async exportDataToCsv(data: any, fileName: string) {
+    await FileHelper.writeFile(data, fileName);
   }
 }

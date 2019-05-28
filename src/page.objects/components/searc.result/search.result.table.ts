@@ -41,7 +41,7 @@ export class SearchResultTable {
   public async getAllPrices(): Promise<any> {
     const prices: any = await $$(`${this.flightRowSelector} ${this.flightPriceLocator}`).getText();
     prices.forEach((e, index, arr) => {
-      arr[index] = e.replace(',', '');
+      arr[index] = +e.replace(',', '');
     });
     return prices;
   }

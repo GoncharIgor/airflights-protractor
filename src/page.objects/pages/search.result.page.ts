@@ -5,7 +5,7 @@ import {SearchResultTable} from '../components/searc.result/search.result.table'
 import {BasePage} from './base.page';
 import {FileHelper} from '../../helpers/file.helper';
 
-export default class SearchResultPage extends BasePage {
+export class SearchResultPage extends BasePage {
   public readonly searchResultTable: SearchResultTable = new SearchResultTable();
   public readonly searchResultAirlinesFilter: SearchResultAirlinesFilter = new SearchResultAirlinesFilter();
 
@@ -27,10 +27,5 @@ export default class SearchResultPage extends BasePage {
   public async selectFlight(index: number) {
     await browser.logger.info('Selecting flight by index:', index);
     await this.searchResultTable.selectFlightByIndex(index);
-  }
-
-  public async exportFlightPricesToCsv() {
-    const prices = await this.searchResultTable.getAllPrices();
-    await FileHelper.writeFile(prices, 'pricesAsc.csv');
   }
 }

@@ -21,7 +21,7 @@ export class ArrayHelper {
     return true;
   }
 
-  public static checkArrayIsSorted(incomingArray): boolean {
+  public static checkArrayIsSortedAsc(incomingArray): boolean {
     return !!incomingArray.reduce((n, item) => n !== false && item >= n && item);
   }
 
