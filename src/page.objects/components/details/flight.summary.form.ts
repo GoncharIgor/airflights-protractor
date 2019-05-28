@@ -1,5 +1,5 @@
-import {ElementFinder} from 'protractor';
+import {$, ElementFinder} from 'protractor';
 
 export class FlightSummaryForm {
-  private procceedButton: ElementFinder;
+  private continueToFInalDetailsButton: ElementFinder = $('button[data-testid$="ContinueToPaymentButton"]');
 }
