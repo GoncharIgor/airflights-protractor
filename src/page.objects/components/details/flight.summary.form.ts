@@ -1,5 +1,5 @@
 import {ElementFinder} from 'protractor';
 
-export class FlightDetails {
+export class FlightSummaryForm {
   private procceedButton: ElementFinder;
 }
