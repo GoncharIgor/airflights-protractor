@@ -1,8 +1,19 @@
 E2E tests for Tajawal project
 
-Framework installation
-First of all you need to have Node.js installed, all following commands should be executed in Node.js command prompt 
+Conditions that were met:
+Framework: Protractor
+Programming language: TypeScript
+BDD: Jasmine
+Page object pattern
+Browsers: chrome, firefox
+Screenshots for last page per spec
+Reporting: Allure
+Flakiness: 3 re-runs for flaky tests
 
+Framework installation prerequisites:
+Node.js >= v.8 installed
+
+Install framework:
 1. Install protractor globally with:
 npm install -g protractor
 2. Navigate to your project's folder in command prompt and run:
