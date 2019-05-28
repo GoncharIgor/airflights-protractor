@@ -12,9 +12,19 @@ export default class SearchResultPage extends BasePage {
   private readonly loadingTextLabel = element(by.xpath('//div[contains(text(),"Getting the best deals from over")]'));
 
   public async waitForResultsToLoad(): Promise<boolean> {
-    await this.waitUntilElementVisible(this.modifySearchButton, 40000);
-    await this.waitUntilElementNotVisible(this.loadingTextLabel, 40000);
+    await this.waitUntilElementVisible(this.modifySearchButton, 30000);
+    await this.waitUntilElementNotVisible(this.loadingTextLabel, 30000);
     await browser.logger.info('Page with flights search result was loaded');
     return await this.modifySearchButton.isDisplayed();
+  }
+
+  public async filterByCarrier(carrierName: string) {
+    await browser.logger.info('Filter search results by carrier:', carrierName);
+    await this.searchResultAirlinesFilter.selectCarrierOrigin(carrierName);
+  }
+
+  public async selectFlight(index: number) {
+    await browser.logger.info('Selecting flight by index:', index);
+    await this.searchResultTable.selectFlightByIndex(index);
   }
 }

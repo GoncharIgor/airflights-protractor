@@ -1,4 +1,5 @@
 import {$, by, ElementFinder, protractor} from 'protractor';
+
 import {IPassengers} from '../../../interfaces/IPassengers';
 
 export class PassengersAmountForm {

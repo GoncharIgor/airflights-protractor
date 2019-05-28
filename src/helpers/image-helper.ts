@@ -1,8 +1,7 @@
-import {browser} from 'protractor';
-
 const fs = require('fs');
 const PNG = require('pngjs').PNG;
 const resemble = require('node-resemble-js');
+import {browser} from 'protractor';
 
 class ImageHelper {
   private readonly screenshotsTargetPath: string;

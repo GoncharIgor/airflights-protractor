@@ -4,6 +4,7 @@ const fs = require('fs');
 const exportedFilesDir = browser.params.exportedFilesPath;
 
 export class FileHelper {
+
   public static writeFile(data, fileName) {
 
     if (!fs.existsSync(exportedFilesDir)) {

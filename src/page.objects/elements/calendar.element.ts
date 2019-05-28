@@ -1,4 +1,4 @@
-import {$, $$, browser, by, ElementArrayFinder, ElementFinder} from 'protractor';
+import {$, $$, ElementArrayFinder, ElementFinder} from 'protractor';
 import {BaseFragment} from 'protractor-element-extend';
 
 const dateMMFormat = 'MMM DD YYYY';
