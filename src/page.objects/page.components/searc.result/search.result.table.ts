@@ -5,8 +5,7 @@ import {ElementFinderHelper} from '../../../helpers/element.finder.helper';
 export class SearchResultTable {
   private readonly flightRowSelector = 'div[data-testid^="FlightSearchResult"] > .row';
   private readonly flightPriceLocator = 'div[data-testid$="PriceLabel"]';
-  private readonly departureAirport = 'div[data-testid$="DepartureAirportLabel"]';
-  private readonly originAirport = 'div[data-testid$="ArrivalAirportLabel"]"]';
+  private readonly originCarrierLocator = 'div[data-testid$="Leg1__AirlineLabel"]';
 
   private flightRows: ElementArrayFinder;
   private resultsTableHeader: ElementFinder;
@@ -30,10 +29,6 @@ export class SearchResultTable {
     }
   }
 
-  public async getFlightRowByIndex(index: number): Promise<ElementFinder> {
-    return this.flightRows.get(index);
-  }
-
   public async selectFlightByIndex(index: number) {
     await $$(`${this.flightRowSelector} button`).get(index).click();
   }
@@ -44,5 +39,9 @@ export class SearchResultTable {
       arr[index] = +e.replace(',', '');
     });
     return prices;
+  }
+
+  public async getAllCarriers(): Promise<any> {
+    return await $$(`${this.flightRowSelector} ${this.originCarrierLocator}`).getText();
   }
 }

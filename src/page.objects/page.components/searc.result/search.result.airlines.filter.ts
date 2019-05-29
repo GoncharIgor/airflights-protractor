@@ -35,6 +35,7 @@ export class SearchResultAirlinesFilter {
   }
 
   public async getAllCarriersOriginList() {
+    await this.expandCarriersOriginList();
     return await this.carriersOriginList.getText();
   }
 

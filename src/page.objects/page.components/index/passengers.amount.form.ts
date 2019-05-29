@@ -1,4 +1,4 @@
-import {$, by, ElementFinder, protractor} from 'protractor';
+import {$, ElementFinder} from 'protractor';
 
 import {IPassengers} from '../../../interfaces/IPassengers';
 
@@ -18,7 +18,11 @@ export class PassengersAmountForm {
   }
 
   public async setPassengers(passengers: IPassengers): Promise<void> {
-    for (let i = 1; i < passengers.amount; i++) {
+    const amountOfPassengersAlreadySelected = await this.rootELement.$(this.countLabelSelector).getText();
+    if (+amountOfPassengersAlreadySelected >= passengers.amount) {
+      return;
+    }
+    for (let i = +amountOfPassengersAlreadySelected; i < passengers.amount; i++) {
       await this.rootELement.$(`div[data-testid$="${passengers.category}PlusButton"]`).click();
     }
   }

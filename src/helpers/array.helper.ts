@@ -28,4 +28,16 @@ export class ArrayHelper {
   public static getRandomValueFromArray(array): any {
     return array[Math.floor(Math.random() * array.length)];
   }
+
+  public static arrayHasTheOnlyValues(arr, val) {
+    if (typeof arr !== 'undefined' && arr.length > 0) {
+      return !this.arrayHasOtherValuesExcept(arr, val);
+    }
+  }
+
+  public static arrayHasOtherValuesExcept(arr, val) {
+    if (typeof arr !== 'undefined' && arr.length > 0) {
+      return arr.some((arrVal) => val !== arrVal);
+    }
+  }
 }

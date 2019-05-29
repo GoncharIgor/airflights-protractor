@@ -30,12 +30,14 @@ export class FlightsSearchForm {
   }
 
   public async setOrigin(text: string): Promise<void> {
+    await this.originInputField.clear();
     await this.originInputField.sendKeys(text);
     await this.originInputField.sendKeys(protractor.Key.ENTER);
     await browser.logger.info('Flight origin was set to:', text);
   }
 
   public async setDestination(text: string): Promise<void> {
+    await this.destinationInputField.clear();
     await this.destinationInputField.sendKeys(text);
     await this.destinationInputField.sendKeys(protractor.Key.ENTER);
     await browser.logger.info('Flight origin was set to:', text);
@@ -76,8 +78,8 @@ export class FlightsSearchForm {
 
   public async fillSearchForm(flight: IFlight): Promise<void> {
     await this.selectRoundTrip();
-    await this.setOrigin(flight.origin);
     await this.setDestination(flight.destination);
+    await this.setOrigin(flight.origin);
     await this.setFromDate(flight.fromDate);
     await this.setToDate(flight.toDate);
     await this.setPassengers(flight.passengers);

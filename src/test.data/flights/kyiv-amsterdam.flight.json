@@ -1,8 +1,8 @@
 {
   "origin": "Kyiv",
-  "destination": "BCN",
-  "fromDate": "May 28 2019",
-  "toDate": "Jun 05 2019",
+  "destination": "AMS",
+  "fromDate": "Jun 04 2019",
+  "toDate": "Jun 15 2019",
   "cabinType": "economy",
   "passengers": {
     "category": "Adults",

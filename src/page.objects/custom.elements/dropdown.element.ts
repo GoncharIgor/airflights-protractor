@@ -1,21 +1,24 @@
-import {$$, by, element} from 'protractor';
+import {$$, by, element, ElementFinder} from 'protractor';
 import {BaseFragment} from 'protractor-element-extend';
 
 export class DropDown extends BaseFragment {
-  constructor(rootElement, optOptionElementName) {
+  constructor(rootElement: ElementFinder, optOptionElementName?: string) {
     super(rootElement);
-    this.dropdown = rootElement;
-    this.optionElement = optOptionElementName || 'a';
-    this.openStateLocator = `.dropdown.open ${this.optionElement}`;
+    this.dropdown = rootElement.element(by.xpath('../..'));
+    this.optionElement = optOptionElementName || 'ul li';
+  }
+
+  public async openDropDown() {
+    await this.dropdown.click();
   }
 
   public async selectOption(optionName): Promise<void> {
-    const optionLocator = await element(by.cssContainingText(this.openStateLocator, optionName));
+    const optionLocator = await this.dropdown.element(by.cssContainingText(this.optionElement, optionName));
     await optionLocator.click();
   }
 
   public async selectOptionByIndex(index): Promise<void> {
-    const optionLocator = $$(this.openStateLocator).get(index);
+    const optionLocator = this.dropdown.$$(this.openStateLocator).get(index);
     await optionLocator.click();
   }
 
@@ -24,7 +27,7 @@ export class DropDown extends BaseFragment {
   }
 
   public async isAvailableOption(optionName): Promise<boolean> {
-    const optionLocator = element(by.cssContainingText(this.openStateLocator, optionName));
+    const optionLocator = await this.dropdown.element(by.cssContainingText(this.optionElement, optionName));
     return await optionLocator.isPresent();
   }
 }

@@ -8,6 +8,7 @@ Page object pattern
 Browsers: chrome, firefox
 Screenshots for last page per spec
 Reporting: Allure
+Logger: Log4js
 Flakiness: 3 re-runs for flaky tests
 
 Framework installation prerequisites:

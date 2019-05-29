@@ -9,7 +9,7 @@ const indexPage = new IndexPage();
 const searchResultPage = new SearchResultPage();
 
 describe('SEARCH RESULTS: prices filtering', () => {
-  const data: IFlight = Object.assign(require('../test.data/sydney-doha.flight.json'));
+  const data: IFlight = Object.assign(require('../test.data/flights/sydney-doha.flight.json'));
   let flightsPrices;
 
   beforeAll(async () => {
@@ -21,14 +21,16 @@ describe('SEARCH RESULTS: prices filtering', () => {
 
   it('WHEN user searches for any flight ' +
     'AND clicks "price sorting" link on search results page ' +
-    'THEN flights are sorted per price in ascending order', async () => {
+    'THEN flights are sorted per price in ascending order ' +
+    'AND prices are exported to .csv file', async () => {
     await searchResultPage.searchResultTable.sortPriceAsc();
     flightsPrices = await searchResultPage.searchResultTable.getAllPrices();
+
     expect(ArrayHelper.checkArrayIsSortedAsc(flightsPrices)).toBe(true,
       'Prices are not sorted in ascending order');
   });
 
   afterAll(async () => {
     await searchResultPage.exportDataToCsv(flightsPrices, 'flightsPricesAsc.csv');
-  })
+  });
 });

@@ -1,15 +1,32 @@
-import {$, ElementFinder} from "protractor";
+import {$, browser, ElementFinder} from 'protractor';
+import {DropDown} from '../../custom.elements/dropdown.element';
 
 export class PassangerDetailsForm {
-  private titleDropDown: ElementFinder;
+  private titleDropDown: DropDown;
   private firstNameInput: ElementFinder;
   private middleNameInput: ElementFinder;
   private lastNameInput: ElementFinder;
 
-  constructor(rootElement){
-    this.titleDropDown = $('select[placeholder="Title"]');
-    this.firstNameInput = $('input[data-testid$="FirstNameInput"]');
-    this.middleNameInput = $('input[data-testid$="MiddleNameInput"]');
-    this.lastNameInput = $('input[data-testid$="LastNameInput"]');
+  constructor(rootElement) {
+    this.titleDropDown = new DropDown(rootElement.$('select[placeholder="Title"]'));
+    this.firstNameInput = rootElement.$('input[data-testid$="FirstNameInput"]');
+    this.middleNameInput = rootElement.$('input[data-testid$="MiddleNameInput"]');
+    this.lastNameInput = rootElement.$('input[data-testid$="LastNameInput"]');
+  }
+
+  public async selectPassengerTitle(title: string) {
+    await this.titleDropDown.openDropDown();
+    await this.titleDropDown.selectOption(title);
+    await browser.logger.info('Passenger title was set to:', title);
+  }
+
+  public async setPassengerFirstName(firstName: string) {
+    await this.firstNameInput.sendKeys(firstName);
+    await browser.logger.info('Passenger first name was set to:', firstName);
+  }
+
+  public async setPassengerLastName(lastName: string) {
+    await this.lastNameInput.sendKeys(lastName);
+    await browser.logger.info('Passenger last name was set to:', lastName);
   }
 }

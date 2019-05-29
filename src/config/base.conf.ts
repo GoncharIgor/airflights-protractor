@@ -14,7 +14,6 @@ export const computersBaseConfig = {
   framework: 'jasmine2',
   seleniumServerJar: jar.path,
   SELENIUM_PROMISE_MANAGER: false,
-  // seleniumAddress: 'http://localhost:4444/wd/hub/',
   allScriptsTimeout: 30000,
   jasmineNodeOpts: {
     defaultTimeoutInterval: 30000

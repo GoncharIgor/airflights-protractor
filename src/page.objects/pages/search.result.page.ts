@@ -3,7 +3,6 @@ import {$, browser, by, element} from 'protractor';
 import {SearchResultAirlinesFilter} from '../page.components/searc.result/search.result.airlines.filter';
 import {SearchResultTable} from '../page.components/searc.result/search.result.table';
 import {BasePage} from './base.page';
-import {FileHelper} from '../../helpers/file.helper';
 
 export class SearchResultPage extends BasePage {
   public readonly searchResultTable: SearchResultTable = new SearchResultTable();

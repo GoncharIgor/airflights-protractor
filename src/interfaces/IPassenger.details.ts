@@ -1,8 +1,8 @@
 export interface IPassengerDetails {
-  sex: string;
+  title: string;
   firstName: string;
   middleName?: string;
   lastName: string;
   email?: string;
-  phoneNumber: string;
+  phoneNumber?: string;
 }

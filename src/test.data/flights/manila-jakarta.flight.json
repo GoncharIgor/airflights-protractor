@@ -1,8 +1,8 @@
 {
   "origin": "Manila",
   "destination": "Jakarta",
-  "fromDate": "May 28 2019",
-  "toDate": "Jun 05 2019",
+  "fromDate": "Jun 05 2019",
+  "toDate": "Jun 22 2019",
   "cabinType": "economy",
   "passengers": {
     "category": "Adults",
