@@ -1,7 +1,7 @@
 import {$, browser, by, element} from 'protractor';
 
-import {SearchResultAirlinesFilter} from '../page.components/searc.result/search.result.airlines.filter';
-import {SearchResultTable} from '../page.components/searc.result/search.result.table';
+import {SearchResultAirlinesFilter} from '../page.components/search.result/search.result.airlines.filter';
+import {SearchResultTable} from '../page.components/search.result/search.result.table';
 import {BasePage} from './base.page';
 
 export class SearchResultPage extends BasePage {

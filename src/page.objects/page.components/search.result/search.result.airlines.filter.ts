@@ -1,4 +1,4 @@
-import {$$, by, element, ElementArrayFinder, ElementFinder} from 'protractor';
+import {$$, by, element, ElementArrayFinder, ElementFinder, promise} from 'protractor';
 
 import {ArrayHelper} from '../../../helpers/array.helper';
 import {ElementFinderHelper} from '../../../helpers/element.finder.helper';
@@ -29,12 +29,12 @@ export class SearchResultAirlinesFilter {
     return carriersList.includes(carrierName);
   }
 
-  public async getRandomCarrier() {
+  public async getRandomCarrier(): Promise<string> {
     const carriersList = await this.getAllCarriersOriginList();
     return ArrayHelper.getRandomValueFromArray(carriersList);
   }
 
-  public async getAllCarriersOriginList() {
+  public async getAllCarriersOriginList(): Promise<any> {
     await this.expandCarriersOriginList();
     return await this.carriersOriginList.getText();
   }

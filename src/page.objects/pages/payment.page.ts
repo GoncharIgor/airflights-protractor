@@ -18,7 +18,7 @@ export class PaymentPage extends BasePage {
     this.contactDetailsFrom = new ContactDetailsFrom($$('.card .card-body').last());
   }
 
-  public async fillPassengerDetailsForm(passengerDetails: IPassengerDetails[]) {
+  public async fillPassengerDetailsForm(passengerDetails: IPassengerDetails[]): Promise<void> {
     await this.asyncForEach(passengerDetails, async (detail, index) => {
       const passengerDetailsForm = await new PassangerDetailsForm($$(this.passengerDetailsLocator).get(index));
 
@@ -28,7 +28,7 @@ export class PaymentPage extends BasePage {
     });
   }
 
-  public async fillPassengerContacts(passengerDetails: IPassengerDetails) {
+  public async fillPassengerContacts(passengerDetails: IPassengerDetails): Promise<void> {
     await this.contactDetailsFrom.selectPassengerTitle(passengerDetails.title);
     await this.contactDetailsFrom.setPassengerFirstName(passengerDetails.firstName);
     await this.contactDetailsFrom.setPassengerLastName(passengerDetails.lastName);
