@@ -1,7 +1,7 @@
 import {$, browser, ElementFinder, protractor} from 'protractor';
 
 import {IFlight} from '../../../interfaces/IFlight';
-import {CalendarElement} from '../../elements/calendar.element';
+import {CalendarElement} from '../../custom.elements/calendar.element';
 import {PassengersAmountForm} from './passengers.amount.form';
 
 export class FlightsSearchForm {

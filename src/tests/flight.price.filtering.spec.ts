@@ -24,7 +24,6 @@ describe('SEARCH RESULTS: prices filtering', () => {
     'THEN flights are sorted per price in ascending order', async () => {
     await searchResultPage.searchResultTable.sortPriceAsc();
     flightsPrices = await searchResultPage.searchResultTable.getAllPrices();
-    console.log(flightsPrices);
     expect(ArrayHelper.checkArrayIsSortedAsc(flightsPrices)).toBe(true,
       'Prices are not sorted in ascending order');
   });

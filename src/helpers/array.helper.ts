@@ -11,7 +11,7 @@ export class ArrayHelper {
       return false;
     }
 
-    // If you don't care about the order of the elements inside
+    // If you don't care about the order of the custom.elements inside
     // the array, you should sort both arrays here.
     for (let i = 0; i < a.length; ++i) {
       if (a[i] !== b[i]) {

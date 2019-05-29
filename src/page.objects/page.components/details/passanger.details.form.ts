@@ -1,6 +1,6 @@
 import {$, ElementFinder} from "protractor";
 
-export class PassangerDetails {
+export class PassangerDetailsForm {
   private titleDropDown: ElementFinder;
   private firstNameInput: ElementFinder;
   private middleNameInput: ElementFinder;
