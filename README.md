@@ -1,15 +1,15 @@
 E2E tests for Tajawal project
 
 Conditions that were met:
-Framework: Protractor
-Programming language: TypeScript
-BDD: Jasmine
-Page object pattern
-Browsers: chrome, firefox
-Screenshots for last page per spec
-Reporting: Allure
-Logger: Log4js
-Flakiness: 3 re-runs for flaky tests
+- Framework: Protractor
+- Programming language: TypeScript
+- BDD: Jasmine
+- Page object pattern
+- Browsers: chrome, firefox
+- Screenshots for last page per spec
+- Reporting: Allure
+- Logger: Log4js
+- Flakiness: 3 re-runs for flaky tests
 
 Framework installation prerequisites:
 Node.js >= v.8 installed
