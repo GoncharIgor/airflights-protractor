@@ -1,4 +1,4 @@
-import {$$, by, element, ElementArrayFinder, ElementFinder, promise} from 'protractor';
+import {$$, browser, by, element, ElementArrayFinder, ElementFinder, promise} from 'protractor';
 
 import {ArrayHelper} from '../../../helpers/array.helper';
 import {ElementFinderHelper} from '../../../helpers/element.finder.helper';
@@ -49,7 +49,16 @@ export class SearchResultAirlinesFilter {
   }
 
   private async checkCarriersOriginListIsExpanded(): Promise<boolean> {
+    if (!await this.checkCarriersOriginListExpandLinkExists()) {
+      return true;
+    }
     const linkText = await this.carriersOriginExpandLink.getText();
     return linkText.startsWith('Show less');
+  }
+
+  private async checkCarriersOriginListExpandLinkExists(): Promise<boolean> {
+    return await browser.wait(async () => {
+      return await this.carriersOriginExpandLink.isPresent();
+    }, 1000);
   }
 }

@@ -1,4 +1,4 @@
-import {$, browser, ElementFinder} from 'protractor';
+import {$, browser, ElementFinder, protractor} from 'protractor';
 import {DropDown} from '../../custom.elements/dropdown.element';
 
 export class ContactDetailsFrom {
@@ -43,6 +43,7 @@ export class ContactDetailsFrom {
 
   public async setPhoneNumber(phoneNumber: string) {
     await this.phoneCountryCodeInput.sendKeys(phoneNumber.substring(0, 4));
+    await this.phoneCountryCodeInput.sendKeys(protractor.Key.ENTER);
     await this.mobilePhoneNumberInput.sendKeys(phoneNumber.substring(4, 13));
     await browser.logger.info('Passenger phone number was set to:', phoneNumber);
   }

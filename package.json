@@ -1,6 +1,6 @@
 {
   "name": "tajawal-protractor",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Demostration project using Protractor with TypeScript",
   "main": "index.js",
   "devDependencies": {
@@ -57,6 +57,6 @@
     "type": "git",
     "url": "https://github.com/GoncharIgor/TypescriptProtractor.git"
   },
-  "author": "",
+  "author": "Igor Gonchar",
   "license": "ISC"
 }

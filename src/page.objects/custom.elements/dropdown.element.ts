@@ -2,6 +2,9 @@ import {$$, by, element, ElementFinder} from 'protractor';
 import {BaseFragment} from 'protractor-element-extend';
 
 export class DropDown extends BaseFragment {
+  private dropdown: ElementFinder;
+  private optionElement: string;
+
   constructor(rootElement: ElementFinder, optOptionElementName?: string) {
     super(rootElement);
     this.dropdown = rootElement.element(by.xpath('../..'));
