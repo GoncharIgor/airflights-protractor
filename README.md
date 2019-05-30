@@ -31,3 +31,16 @@ Generate test report:
 npm run allure-generate-report
 2. Navigate to folder ./target/allure-html-report
 3. Open index.html file
+
+Run tests in Firefox browser:
+1. To update selenium server with chrome driver - Run script:
+npm run wd-update-firefox
+2. In package.json, update parameter in "test" script:
+target/src/config/chrome.conf.js, => target/src/config/ff.conf.js
+3. To start tests execution - Run script:
+npm run test
+
+Note: 
+1. Firefox browser is less stable than Chrome and additional efforts are needed for locator and timeout strategies
+This may be done further, not in terms of demo
+2. Don't worry to change browser name manually in package.json. In real project it has to be done dynamically by CI env. variables
