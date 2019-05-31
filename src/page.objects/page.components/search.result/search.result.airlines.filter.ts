@@ -21,20 +21,25 @@ export class SearchResultAirlinesFilter {
     const optionLocator =
       await element(by.xpath((`${this.carriersOriginListSelector}[contains(text(),"${carrierName}")]`)));
     await optionLocator.click();
+    await browser.logger.info('Carrier was selected in the origin city list:', carrierName);
   }
 
   public async checkCarrierIsPresentInOriginList(carrierName: string) {
     await this.expandCarriersOriginList();
     const carriersList = await this.getAllCarriersOriginList();
+    await browser.logger.info('Checking presence of carrier on the orifin list:', carrierName);
     return carriersList.includes(carrierName);
   }
 
   public async getRandomCarrier(): Promise<string> {
     const carriersList = await this.getAllCarriersOriginList();
-    return ArrayHelper.getRandomValueFromArray(carriersList);
+    const carrier = ArrayHelper.getRandomValueFromArray(carriersList);
+    await browser.logger.info('Getting random carrier:', carrier);
+    return carrier;
   }
 
   public async getAllCarriersOriginList(): Promise<any> {
+    await browser.logger.info('Getting all carriers list from origin city');
     await this.expandCarriersOriginList();
     return await this.carriersOriginList.getText();
   }
@@ -49,7 +54,7 @@ export class SearchResultAirlinesFilter {
   }
 
   private async checkCarriersOriginListIsExpanded(): Promise<boolean> {
-    if (!await this.checkCarriersOriginListExpandLinkExists()) {
+    if (!await this.carriersOriginExpandLink.isPresent()) {
       return true;
     }
     const linkText = await this.carriersOriginExpandLink.getText();

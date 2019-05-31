@@ -15,8 +15,9 @@ export const computersBaseConfig = {
   seleniumServerJar: jar.path,
   SELENIUM_PROMISE_MANAGER: false,
   allScriptsTimeout: 30000,
+  getPageTimeout: 30000,
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 30000
+    defaultTimeoutInterval: 100000
   },
   specs: ['../tests/*.js'],
   suites: {},

@@ -21,7 +21,7 @@
     "pre-commit": "^1.2.2",
     "protractor": "5.4.2",
     "protractor-element-extend": "2.1.0",
-    "protractor-flake": "4.0.0",
+    "protractor-flake-custom-ts-path": "0.0.2",
     "protractor-helpers": "1.1.527",
     "q": "1.5.1",
     "request": "2.88.0",

@@ -1,4 +1,4 @@
-const protractorFlake = require('protractor-flake');
+const protractorFlake = require('protractor-flake-custom-ts-path');
 
 const protractorArgs = process.argv.splice(2); // skip first two passed args (node and self)
 

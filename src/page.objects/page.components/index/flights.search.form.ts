@@ -68,6 +68,7 @@ export class FlightsSearchForm {
   }
 
   public async submitForm(): Promise<void> {
+    await browser.logger.info('Search flight form was submitted');
     await this.submitButton.click();
   }
 
