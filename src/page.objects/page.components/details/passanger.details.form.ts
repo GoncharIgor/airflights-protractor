@@ -15,7 +15,7 @@ export class PassangerDetailsForm {
   }
 
   public async selectPassengerTitle(title: string) {
-    await this.titleDropDown.openDropDown();
+    await this.titleDropDown.open();
     await this.titleDropDown.selectOption(title);
     await browser.logger.info('Passenger title was set to:', title);
   }

@@ -1,8 +1,8 @@
 {
   "origin": "Kyiv",
   "destination": "AMS",
-  "fromDate": "Jun 04 2019",
-  "toDate": "Jun 15 2019",
+  "fromDate": "Jun 14 2019",
+  "toDate": "Jul 22 2019",
   "cabinType": "economy",
   "passengers": {
     "category": "Adults",

@@ -34,6 +34,7 @@ export abstract class BasePage {
   }
 
   public async exportDataToCsv(data: any, fileName: string): Promise<void> {
+    await browser.logger.info('Exporting data to file:', fileName);
     await FileHelper.writeFile(data, fileName);
   }
 }

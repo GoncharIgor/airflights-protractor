@@ -1,8 +1,8 @@
 {
   "origin": "SYD",
   "destination": "Doha",
-  "fromDate": "Jun 10 2019",
-  "toDate": "Jun 14 2019",
+  "fromDate": "Jun 27 2019",
+  "toDate": "Jul 14 2019",
   "cabinType": "economy",
   "passengers": {
     "category": "Adults",

@@ -5,13 +5,13 @@ export class DropDown extends BaseFragment {
   private dropdown: ElementFinder;
   private optionElement: string;
 
-  constructor(rootElement: ElementFinder, optOptionElementName?: string) {
+  constructor(rootElement: ElementFinder, optionElementName?: string, customWrapperLocator?: string) {
     super(rootElement);
-    this.dropdown = rootElement.element(by.xpath('../..'));
-    this.optionElement = optOptionElementName || 'ul li';
+    this.dropdown = rootElement.element(by.xpath(customWrapperLocator || '../..'));
+    this.optionElement = optionElementName || 'ul li';
   }
 
-  public async openDropDown() {
+  public async open() {
     await this.dropdown.click();
   }
 

@@ -7,14 +7,14 @@ import {PassengersAmountForm} from './passengers.amount.form';
 export class FlightsSearchForm {
   public calendar: CalendarElement;
   public passengersAmountForm: PassengersAmountForm;
-  private cabinTypeDropDown: ElementFinder;
-  private destinationInputField: ElementFinder;
-  private fromCalendarIcon: ElementFinder;
-  private originInputField: ElementFinder;
-  private passengersAmountDropDown: ElementFinder;
-  private roundTripButton: ElementFinder;
-  private submitButton: ElementFinder;
-  private toCalendarIcon: ElementFinder;
+  private readonly cabinTypeDropDown: ElementFinder;
+  private readonly destinationInputField: ElementFinder;
+  private readonly fromCalendarIcon: ElementFinder;
+  private readonly originInputField: ElementFinder;
+  private readonly passengersAmountDropDown: ElementFinder;
+  private readonly roundTripButton: ElementFinder;
+  private readonly submitButton: ElementFinder;
+  private readonly toCalendarIcon: ElementFinder;
 
   public constructor(rootElement = $('.container + div div .container')) {
     this.cabinTypeDropDown = $('div[data-testid$="CabinTypeDropdown"]');
@@ -44,13 +44,13 @@ export class FlightsSearchForm {
   }
 
   public async setFromDate(date: string): Promise<void> {
-    await this.fromCalendarIcon.click();
+    await this.openCalendar(this.fromCalendarIcon);
     await this.calendar.selectDate(date);
     await browser.logger.info('From date was set to:', date);
   }
 
   public async setToDate(date: string): Promise<void> {
-    await this.toCalendarIcon.click();
+    await this.openCalendar(this.toCalendarIcon);
     await this.calendar.selectDate(date);
     await browser.logger.info('End date was set to:', date);
 
@@ -84,5 +84,9 @@ export class FlightsSearchForm {
     await this.setFromDate(flight.fromDate);
     await this.setToDate(flight.toDate);
     await this.setPassengers(flight.passengers);
+  }
+
+  public async openCalendar(elem: ElementFinder): Promise<void> {
+    await elem.click();
   }
 }
