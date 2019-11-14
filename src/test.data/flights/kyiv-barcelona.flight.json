@@ -1,8 +1,8 @@
 {
   "origin": "Kyiv",
   "destination": "BCN",
-  "fromDate": "Jun 12 2019",
-  "toDate": "Jun 27 2019",
+  "fromDate": "Nov 18 2019",
+  "toDate": "Nov 27 2019",
   "cabinType": "economy",
   "passengers": {
     "category": "Adults",

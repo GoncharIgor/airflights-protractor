@@ -29,7 +29,7 @@
     "selenium-server-standalone-jar": "3.141.5",
     "ts-node": "^8.1.0",
     "tslint": "^5.16.0",
-    "typescript": "^3.4.5",
+    "typescript": "3.4.5",
     "typescript-eslint-parser": "^22.0.0"
   },
   "engines": {
@@ -46,7 +46,7 @@
     "lint": "tslint src/**/*.ts",
     "lint-fix": "tslint src/**/*.ts --fix",
     "wd-status": "node node_modules/protractor/bin/webdriver-manager status",
-    "wd-update-chrome": "node node_modules/protractor/bin/webdriver-manager update --versions.chrome=74.0.3729.6 --gecko false",
+    "wd-update-chrome": "node node_modules/protractor/bin/webdriver-manager update --versions.chrome=78.0.3904.70 --gecko false",
     "wd-update-firefox": "node node_modules/protractor/bin/webdriver-manager update --versions.gecko=v0.24.0",
     "wd-update-ie": "node node_modules/protractor/bin/webdriver-manager update --ie --gecko false"
   },
