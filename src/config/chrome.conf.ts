@@ -6,6 +6,7 @@ export const config = _.merge(computersBaseConfig, {
   capabilities: {
     browserName: 'chrome',
     chromeOptions: {
+      excludeSwitches: ['enable-automation'],
       args: [
         '--no-sandbox',
         '--test-type=browser',
